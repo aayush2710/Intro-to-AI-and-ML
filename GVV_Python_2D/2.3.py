@@ -36,4 +36,5 @@ CF = np.vstack((C,F)).T
 BE = np.vstack((B,E)).T
 dvec = np.array([-1,1])
 omat= np.array([[0,1],[-1,0]])
-print(line_intersect(CF,BE))
+Q = line_intersect(CF,BE)
+print(Q[0])
