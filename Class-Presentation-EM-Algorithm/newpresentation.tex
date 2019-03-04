@@ -129,9 +129,9 @@ $Y &= (1-\Delta)*Y_{1} + \Delta * Y_{2} $\linebreak
 where $\Delta \in \{0, 1\}$ with $Pr(\Delta &= 1) = \pi $\linebreak\linebreak
 This generative representation is explicit: generate a $\Delta \in \{0, 1\} $ with
 probability $\pi$, and then depending on the outcome, deliver either Y_{1}  or  Y_{2} .
-Let $\phi$ $\theta$ (x) denote the normal density with parameters $\theta = (\mu, \sigma^2 )$. Then the
+Let $\phi _{\theta}$ (x) denote the normal density with parameters $\theta = (\mu, \sigma^2 )$. Then the
 density of Y is\linebreak
-$gY(y) = (1- \pi)\phi \theta_{1} (y)  + \pi\phi \theta_{2} (y).$}
+$g_{Y(y)} = (1- \pi)\phi_{\theta_{1}} (y)  + \pi\phi _{\theta_{2}} (y).$}
 
 \end{frame}
 
@@ -140,11 +140,12 @@ $gY(y) = (1- \pi)\phi \theta_{1} (y)  + \pi\phi \theta_{2} (y).$}
 \textsf{Now suppose we wish to fit this model to the data in Figure 8.5 by maximum likelihood.The parameters are\linebreak
 $\theta = (\pi, \theta_{1} , \theta_{2}) = (\pi, \mu_{1} , \sigma_{1}^2 , \mu_{2} , \sigma_{2}^2)$\linebreak
 The log-likelihood based on the N training cases is}\linebreak\linebreak
-$l(\theta; Z) = \sum_{i=1}^{N}  log[(1- \pi)\phi \theta_{1} (y_{i}) + \pi\phi \theta_{2} (y_{i} )]$\linebreak\linebreak
+$l(\theta; Z) = \sum_{i=1}^{N}  log[(1- \pi)\phi _{\theta_{1}} (y_{i}) + \pi\phi _{\theta_{2}} (y_{i} )]$\linebreak\linebreak
 \textsf{Direct maximization of $l(\theta; Z)$ is quite difficult numerically, because of
-the sum of terms inside the logarithm. There is, however, a simpler approach. We consider unobserved latent variables $\theta_{i}$ taking values 0 or 1 as
-in (8.36): if $\Delta_{i} = 1 $then $Y_{1}$ comes from model 2, otherwise it comes from
-model 1.\linebreak\linebreak
+the sum of terms inside the logarithm. We know that a particular y comes from either model 1($\theta_{1}$) or model 2($\theta_{2}$).Lets take a variable $\Delta_{i}$ in {0,1} as we did previously. So 
+\linebreak \linebreak
+$l_{0}(\theta;Z,\Delta) = \sum_{i=1}^{N}[(1-\Delta_{i})log(1-\pi)\phi_{\theta_{1}} + (\Delta_{i}log\pi\phi_{\theta_{2}})] $
+\linebreak \linebreak
 $l_{0}(\theta;Z,\Delta) = \sum_{i=1}^{N}[(1-\Delta_{i})log\phi_{\theta_{1}}(y_{i}) + \Delta_{i}log\phi_{\theta_{2}}(y_{i})] + \sum_{i=1}^{N}[(1-\Delta_{i})log(1-\pi)(y_{i}) + \Delta_{i}log\pi]$}
 \end{frame}
 
